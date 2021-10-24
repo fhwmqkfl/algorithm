@@ -12,7 +12,7 @@ n = int(input())
 
 # print(len(result))
 
-#에라토스테네스 체
+#에라토스테네스
 ch=[0]*(n+1)
 cnt=0
 
