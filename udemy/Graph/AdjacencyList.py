@@ -21,7 +21,7 @@ class Graph:
             return True
         return False
 
-    #remove edge
+    # remove edge
     def remove_dege(self, v1, v2):
         if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
             try:
@@ -33,7 +33,16 @@ class Graph:
             return True
         return False
 
-    #remode vertex
+    # remove vertex
+    # edge도 다 지워야함
+    def remove_vertex(self, vertex):
+        if vertex in self.adj_list.keys():
+            for other_vertex in self.adj_list[vertex]:
+                self.adj_list[other_vertex].remove(vertex)
+            del self.adj_list[vertex]
+            return True
+        return False
+
 my_graph = Graph()
 
 my_graph.add_vertex(1)
@@ -41,19 +50,22 @@ my_graph.add_vertex(2)
 my_graph.add_vertex(3)
 my_graph.add_vertex(4)
 
-# 1 : [2, 3]
-# 2 : [1, 3]
-# 3 : [2, 1]
-
 my_graph.add_edge(1,2)
-my_graph.add_edge(2,3)
 my_graph.add_edge(1,3)
+my_graph.add_edge(1,4)
+my_graph.add_edge(2,4)
+my_graph.add_edge(3,4)
+# 1 : [2, 3, 4]
+# 2 : [1, 4]
+# 3 : [1, 4]
+# 4 : [1, 2, 3]
 
-#1 : [3]
-# 2 : [3]
-# 3 : [2, 1]
+#my_graph.remove_dege(1,2)
+my_graph.remove_vertex(4)
 
-my_graph.remove_dege(1,2)
+# 1 : [2, 3]
+# 2 : [1]
+# 3 : [1]
 
 my_graph.print_graph()
 
