@@ -1,0 +1,54 @@
+import sys
+
+sys.stdin = open('input.txt', 'r')
+
+# 창고 정리
+l = int(input())
+box = list(map(int, input().split()))
+m = int(input())
+
+for i in range(m):
+    box.sort()
+    box[0] += 1
+    box[-1] -= 1
+
+box.sort()
+print(box[-1]-box[0])
+
+# sort를 사용하지 않고 리스트를 이용한 해쉬 방법으로 처리해보기
+L = int(input())
+box = list(map(int, input().split()))
+m = int(input())
+
+cnt = [0] * 101
+
+# 음의 무한대, 양의 무한대 표시
+maxH = float('-inf')
+minH = float('inf')
+
+# 여기서 최대 최소값을 찾아냄
+for x in box:
+    cnt[x] += 1
+    if x > maxH:
+        maxH = x
+    if x < minH:
+        minH = x
+
+for _ in range(m):
+    if cnt[maxH] == 1:
+        cnt[maxH] -= 1
+        maxH -= 1
+        cnt[maxH] += 1
+    else:
+        cnt[maxH] -= 1
+        cnt[maxH - 1] += 1
+
+    if cnt[minH] == 1:
+        cnt[minH] -= 1
+        minH += 1
+        cnt[minH] += 1
+    else:
+        cnt[minH] -= 1
+        cnt[minH + 1] += 1
+
+print(maxH - minH)
