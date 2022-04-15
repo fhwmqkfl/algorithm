@@ -22,7 +22,7 @@ for i in range(n):
     for j in range(n):
         # 자기자리 찾아 들어가는중
         if a[i] == 0 and seq[j] == 0:
-            seq[j] = a[i] + 1
+            seq[j] = i + 1
             break
         # 빈자리 확보하는중
         elif seq[j] == 0:
