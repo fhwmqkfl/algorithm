@@ -29,8 +29,9 @@ input = sys.stdin.readline
 def DFS(L):
     global cnt
     if L == m:
+        # res의 값이 모두 찼으니 해당 리스트값 출력
         for j in range(m):
-            print(res[j], end=' ')
+            print(res[j], end=" ")
         print()
         cnt += 1
 
