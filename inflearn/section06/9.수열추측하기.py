@@ -12,7 +12,7 @@ def DFS(L, sum):
         # f를 충족하는 값이 여러번 나올 수 있으므로 그냥 처음 나온값 출력후 바로 시스템 종료
         sys.exit(0)
     else:
-        # 순열 만든다
+        # 수열 만든다
         for i in range(1, n+1):
             if ch[i] == 0:
                 ch[i] = 1
